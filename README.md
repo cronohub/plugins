@@ -17,6 +17,7 @@ One of those requirements must be `cronohub`. Cronohub also requires `colors` so
 The entry to the plugin must be the name of the plugin as folder name and the name of the plugin as `name.py`. For example
 for github as source the directory structure looks like this:
 
+```
 plugins-
        |
        - source-
@@ -25,7 +26,8 @@ plugins-
                        |
                        - github.py
                        - requirements.txt
-                       
+```
+
 # Class
 
 The plugins must not contain a main method. It's entry point will be class named either `SourcePlugin` if it's a source plugin
