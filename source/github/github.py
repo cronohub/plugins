@@ -86,7 +86,7 @@ class SourcePlugin(source_plugin.CronohubSourcePlugin):
         return list(map(lambda r: (r.get_archive_link(archive_format="zipball"), r.name), repos))
 
     def fetch(self):
-        repo_list = Path.home() / '.config' / 'cronohub' / '.repo_list'
+        repo_list = Path.home() / '.config' / 'cronohub' / 'configurations' / 'github' / '.repo_list'
         only = []
         if repo_list.is_file():
             with open(str(repo_list)) as conf:

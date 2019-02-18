@@ -14,14 +14,14 @@ class SourcePlugin(source_plugin.CronohubSourcePlugin):
 
     def help(self):
         print('''Help:
-            Gitlab config file under ~/.config/cronohub/gitlab.cfg
+            Gitlab config file under ~/.config/cronohub/configurations/gitlab/gitlab.ini
             [Optional]: Environment Property: CRONOHUB_GITLAB_ID
         ''')
 
     def validate(self):
-        self.cfg_file = Path.home() / '.config' / 'cronohub' / 'source_gitlab.ini'
+        self.cfg_file = Path.home() / '.config' / 'cronohub' / 'configurations' / 'gitlab' / 'gitlab.ini'
         if not self.cfg_file.exists():
-            print('missing configuration file from ~/.config/cronohub/source_gitlab.ini')
+            print("missing configuration file from %s" % str(self.cfg_file))
             return False
         return True
 
