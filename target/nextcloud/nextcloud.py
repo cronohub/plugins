@@ -30,7 +30,7 @@ class TargetPlugin(target_plugin.CronohubTargetPlugin):
 
     def upload(self, f):
         print("uploading %s..." % f[0])
-        self.owncloud.put_file(f[0], f[1])
+        self.ownClient.put_file(f[0], f[1])
 
     def archive(self, files):
         url = os.environ['CRONOHUB_NEXTCLOUD_URL']
