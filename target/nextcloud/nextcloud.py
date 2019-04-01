@@ -8,13 +8,13 @@ class TargetPlugin(target_plugin.CronohubTargetPlugin):
     ownClient = None
 
     def __init__(self):
-        print('initialising owncloud target plugin')
+        print('initialising next cloud target plugin')
 
     def validate(self):
         for v in [
-            'CRONOHUB_OWNCLOUD_URL',
-            'CRONOHUB_OWNCLOUD_USERNAME',
-            'CRONOHUB_OWNCLOUD_PASSWORD'
+            'CRONOHUB_NEXTCLOUD_URL',
+            'CRONOHUB_NEXTCLOUD_USERNAME',
+            'CRONOHUB_NEXTCLOUD_PASSWORD'
         ]:
             if v not in os.environ:
                 print("Please set %s environment variable." % v)
@@ -23,9 +23,9 @@ class TargetPlugin(target_plugin.CronohubTargetPlugin):
 
     def help(self):
         print('''
-        OwnCloud location URL: CRONOHUB_OWNCLOUD_URL (https://username.ocloud.de)
-        OwnCloud Username: CRONOHUB_OWNCLOUD_USERNAME (admin)
-        OwnCloud Password: CRONOHUB_OWNCLOUD_PASSWORD (admin)
+        NextCloud location URL: CRONOHUB_NEXTCLOUD_URL (https://username.ocloud.de)
+        NextCloud Username: CRONOHUB_NEXTCLOUD_USERNAME (admin)
+        NextCloud Password: CRONOHUB_NEXTCLOUD_PASSWORD (admin)
         ''')
 
     def upload(self, f):
@@ -33,9 +33,9 @@ class TargetPlugin(target_plugin.CronohubTargetPlugin):
         self.owncloud.put_file(f[0], f[1])
 
     def archive(self, files):
-        url = os.environ['CRONOHUB_OWNCLOUD_URL']
-        user = os.environ['CRONOHUB_OWNCLOUD_USERNAME']
-        password = os.environ['CRONOHUB_OWNCLOUD_PASSWORD']
+        url = os.environ['CRONOHUB_NEXTCLOUD_URL']
+        user = os.environ['CRONOHUB_NEXTCLOUD_USERNAME']
+        password = os.environ['CRONOHUB_NEXTCLOUD_PASSWORD']
         self.ownClient = owncloud.Client(url)
         self.ownClient.login(user, password)
         with Pool(5) as p:
